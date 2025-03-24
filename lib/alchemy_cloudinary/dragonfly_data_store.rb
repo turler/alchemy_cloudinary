@@ -6,6 +6,7 @@ module AlchemyCloudinary
   class DragonflyDataStore
     def write(content, opts = {})
       result = Cloudinary::Uploader.upload(content.file, {
+        asset_folder: 'alchemy'
         public_id: name(content.name)
       }.merge(opts))
       "#{result['public_id']}.#{result['format']}"
